@@ -45,3 +45,8 @@ cardArray.forEach(card => { // creates forEach statement
     card.style.margin = "10px" // adds space between the cards
     card.style.borderRadius = "20px" // rounds the corners 
 });
+
+// Task 4
+employeeContainer.addEventListener('click',()=>{
+    console.log("Card has been") // logs when a card is clicked
+})
