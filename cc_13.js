@@ -27,6 +27,19 @@ function employeeCardCreator(name,position){ // declares function and parameters
     });
     card.appendChild(removeButton) // appends to card
     employeeContainer.appendChild(card) // appends to container
+
+    // Task 5
+    const editButton = document.createElement('button') // creates an edit button
+    editButton.setAttribute('class', 'edit-button') // assigns class
+    editButton.textContent = 'Edit' // names button 
+    card.appendChild(editButton) // appeands to card
+
+    editButton.addEventListener('dblclick',(event) =>{ // allows employee info to be edited upon double click
+        event.stopPropagation(); // stops propagation
+        editEmployeeCard(card)
+    })
+
+
 }
 
 employeeCardCreator('John','Project Manager') // calling function
@@ -50,3 +63,28 @@ cardArray.forEach(card => { // creates forEach statement
 employeeContainer.addEventListener('click',()=>{
     console.log("Card has been") // logs when a card is clicked
 })
+
+// Task 5
+function editEmployeeCard(card){
+    const employeeName = card.querySelector('.employee-name'); // estavlishes name
+    const employeePosition = card.querySelector('.employee-position'); // establishes position
+
+    const nameInput = document.createElement('input') // creates an input field for name
+    nameInput.value = employeeName.textContent //  identifys which text is being edited
+    const positionInput = document.createElement('input')  // creates an input field for position
+    positionInput.value = employeePosition.textContent // identifys which text is being edited
+
+    const saveButton = document.createElement('button')  // creates save button
+    saveButton.textContent = "Save"  // names save button
+    
+    saveButton.addEventListener('click',()=>{
+        employeeName.textContent = nameInput.value // new name text to display
+        employeePosition.textContent = positionInput.value  // new position text to display
+        saveButton.remove(); // removes save button
+    })
+    
+    employeeName.appendChild(nameInput) // appends  name input to employee name
+    employeePosition.appendChild(positionInput) //appends position input to employee position
+
+    card.appendChild(saveButton) // appends savebutton to card
+}
