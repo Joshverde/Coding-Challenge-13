@@ -28,3 +28,20 @@ function employeeCardCreator(name,position){ // declares function and parameters
     card.appendChild(removeButton) // appends to card
     employeeContainer.appendChild(card) // appends to container
 }
+
+employeeCardCreator('John','Project Manager') // calling function
+employeeCardCreator('brian','Sales') // calling function
+employeeCardCreator('trent','Sales') // calling function
+
+// Task 3
+const cardList = document.querySelectorAll('.employee-card') // selects all cards in employee card class
+const cardArray = Array.from(cardList) // converts node list to an array
+
+cardArray.forEach(card => { // creates forEach statement 
+    card.style.backgroundColor = "darkgreen"; // adds a dark green background
+    card.style.border = "5px solid black" // adds a black solid border
+    card.style.padding = "20px" // adds padding to each card
+    card.style.color = "white" // changes text to white
+    card.style.margin = "10px" // adds space between the cards
+    card.style.borderRadius = "20px" // rounds the corners 
+});
